@@ -1,17 +1,21 @@
 import Form from './Form/Form';
 import Contacts from './Contacts/Contacts';
-import Section from './Section/Section';
+
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout';
+import { RegisterForm } from './Register/Register';
+import { LoginForm } from './Login/Login';
 
 const App = () => {
   return (
-    <div>
-      <Section title="Phonebook">
-        <Form />
-      </Section>
-      <Section title="Contacts">
-        <Contacts />
-      </Section>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Form />} />
+        <Route path="/register" element={<RegisterForm />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/contacts" element={<Contacts />} />
+      </Route>
+    </Routes>
   );
 };
 

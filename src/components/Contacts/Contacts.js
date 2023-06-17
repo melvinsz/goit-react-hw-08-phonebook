@@ -1,13 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { filterContacts } from 'components/redux/slice';
+import { filterContacts } from 'redux/slice';
 import Input from 'components/Input/Input';
 import Notification from 'components/Notification/Notification';
-import {
-  selectContactsList,
-  selectFilterValue,
-} from 'components/redux/Selectors';
+
 import { useEffect } from 'react';
-import { fetchAll, deleteContact } from 'components/redux/operations';
+import { deleteContact, fetchAll } from 'redux/operations';
+import { selectContactsList, selectFilterValue } from 'redux/Selectors';
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -35,6 +33,7 @@ const Contacts = () => {
 
   return (
     <div>
+      <h2>Contacts</h2>
       <Input
         label="Find contacts by name"
         value={filterValue}
