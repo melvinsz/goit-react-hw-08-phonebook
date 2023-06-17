@@ -1,3 +1,5 @@
+import css from './Input.module.css';
+
 const Input = ({ children, ...other }) => {
   const {
     label,
@@ -15,6 +17,7 @@ const Input = ({ children, ...other }) => {
       <label>
         <span>{label}</span>
         <input
+          className={css.input}
           value={value}
           onChange={onChange}
           type={type}

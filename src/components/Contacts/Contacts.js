@@ -2,10 +2,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { filterContacts } from 'redux/slice';
 import Input from 'components/Input/Input';
 import Notification from 'components/Notification/Notification';
-
 import { useEffect } from 'react';
 import { deleteContact, fetchAll } from 'redux/operations';
 import { selectContactsList, selectFilterValue } from 'redux/Selectors';
+
+import css from './Contacts.module.css';
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ const Contacts = () => {
   );
 
   return (
-    <div>
+    <div className={css.container}>
       <h2>Contacts</h2>
       <Input
         label="Find contacts by name"
@@ -46,10 +47,10 @@ const Contacts = () => {
         <Notification message="Contact list is empty." />
       ) : (
         <ul>
-          {filteredContacts.map(({ id, name, phone }) => (
+          {filteredContacts.map(({ id, name, number }) => (
             <li key={id}>
               <span>{name}</span>
-              <span>{phone}</span>
+              <span>{number}</span>
               <button type="button" onClick={() => handleDelete(id)}>
                 Delete
               </button>

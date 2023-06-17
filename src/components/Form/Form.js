@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-
 import Input from 'components/Input/Input';
 import Notiflix from 'notiflix';
 import { selectContactsList } from 'redux/Selectors';
 import { addContact } from 'redux/operations';
+import { Outlet } from 'react-router-dom';
+
+import css from './Form.module.css';
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -24,7 +26,7 @@ const Form = () => {
   };
 
   return (
-    <>
+    <div className={css.container}>
       <h2>Phonebook</h2>
       <form onSubmit={handleSubmit}>
         <Input
@@ -43,9 +45,12 @@ const Form = () => {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
         />
-        <button type="submit">Add contacts</button>
+        <button className={css.button} type="submit">
+          Add contacts
+        </button>
       </form>
-    </>
+      <Outlet />
+    </div>
   );
 };
 
